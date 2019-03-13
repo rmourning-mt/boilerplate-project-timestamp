@@ -9,6 +9,10 @@ function getDateJson(value) {
 }
 
 function parseDateString (value) {
+    var unix = parseInt(value);
+    if (unix.toString() == value) {
+        return new Date(unix);
+    }
     var date = new Date(value);
     if (isNaN(date.getTime())) {
         return null;
