@@ -9,11 +9,15 @@ function getDateJson(value) {
 }
 
 function parseDateString (value) {
-    var timestamp = Date.parse(value);
-    if (isNaN(timestamp)) {
-        return null;
+    var unix = parseInt(value);
+    if (!isNaN(unix)){
+        return new Date(unix);
     }
-    return new Date(timestamp);
+    var timestamp = Date.parse(value);
+    if (!isNaN(timestamp)) {
+        return new Date(timestamp);
+    }
+    return null;
 }
 
 module.exports = {
